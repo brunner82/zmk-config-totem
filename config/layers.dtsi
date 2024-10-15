@@ -2,20 +2,27 @@
 /* Alias               */
 /*=====================*/
 #define __________ &trans
-#define EMOJI      &kp LC(LG(SPACE))
-#define SCR_CAP    &kp LS(LC(LG(N4)))
-#define SCR_REC    &kp LS(LG(N5))
-#define SCR_PRV    &kp LC(LEFT)
-#define SCR_NXT    &kp LC(RIGHT)
-#define SCR_TAB    &kp LC(UP)
 
-#define SYMB_RET   &tlt SYMB RET
-#define NAVI_SPC   &tlt NAVI SPACE
-#define SYMB_BSPC  &tlt SYMB BSPC
+#define KP_LA0     &kp LC(LEFT)
+#define KP_LH2     &kp LC(RIGHT)
+#define KP_LH1     &tlt NAVI SPACE
+#define KP_LH0     &tlt SYMB RET
+
+#define KP_RH0     &tlt SYMB BSPC
+#define KP_RH1     &sk LSHFT
+#define KP_RH2     &kp C_PP
+#define KP_RA0     &rmt FUNC APOS
+
 #define A_LEFT     &kp LA(LEFT)
 #define A_RIGHT    &kp LA(RIGHT)
 #define A_UP       &kp LA(UP)
 #define A_DOWN     &kp LA(DOWN)
+
+#define BT_1       &bt BT_SEL 1
+#define BT_2       &bt BT_SEL 2
+#define BT_3       &bt BT_SEL 3
+#define BT_4       &bt BT_SEL 4
+#define BT_X       &bt BT_CLR
 
 /*=====================*/
 /* Layer               */
@@ -29,7 +36,7 @@ ZMK_LAYER(base_layer, /*
 */&kp Z        &kp X        &kp C        &kp V        &kp B         &kp N        &kp M        &M_COMMA     &M_DOT       &M_FSLH   /*
 ╰────────────┴────────────┴────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────┴────────────┴────────────╯
 ╭────────────╮            ╭────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────╮            ╭────────────╮
-*/SCR_PRV      &none        SCR_NXT      SYMB_RET     NAVI_SPC      &sk LSHFT    SYMB_BSPC    &kp C_PP     &none        &kp APOS  /*
+*/KP_LA0       &none        KP_LH2       KP_LH1       KP_LH0        KP_RH0       KP_RH1       KP_RH2       &none        KP_RA0    /*
 ╰────────────╯            ╰────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────╯            ╰────────────╯
 */)
 
@@ -53,6 +60,19 @@ ZMK_LAYER(symb_layer, /*
 */LX4(TILDE)   LX3(MINUS)   LX2(PLUS)    LX1(EQUAL)   &kp AT        &kp PRCNT    RX1(LBRC)    RX2(LPAR)    RX3(RPAR)    RX4(RBRC) /*
 ├────────────┼────────────┼────────────┼────────────┼────────────┤├────────────┼────────────┼────────────┼────────────┼────────────┤
 */&kp HASH     &kp FSLH     &kp STAR     &kp UNDER    __________    __________   &kp SQT      &kp LT       &kp GT       &kp DQT   /*
+╰────────────┴────────────┴────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────┴────────────┴────────────╯
+╭────────────╮            ╭────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────╮            ╭────────────╮
+*/__________   __________   __________   __________   __________    __________   __________   __________   __________   __________/*
+╰────────────╯            ╰────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────╯            ╰────────────╯
+*/)
+
+ZMK_LAYER(func_layer, /*
+╭────────────┬────────────┬────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────┬────────────┬────────────╮
+*/__________   __________   __________   __________   __________   __________   __________   __________   __________   __________ /*
+├────────────┼────────────┼────────────┼────────────┼────────────┤├────────────┼────────────┼────────────┼────────────┼────────────┤
+*/BT_1         BT_2         BT_3         BT_4         BT_X         __________   __________   __________   __________   __________ /*
+├────────────┼────────────┼────────────┼────────────┼────────────┤├────────────┼────────────┼────────────┼────────────┼────────────┤
+*/__________   __________   __________   __________   __________   __________   __________   __________   __________   __________ /*
 ╰────────────┴────────────┴────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────┴────────────┴────────────╯
 ╭────────────╮            ╭────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────╮            ╭────────────╮
 */__________   __________   __________   __________   __________    __________   __________   __________   __________   __________/*
@@ -104,11 +124,4 @@ ZMK_COMBO(r_lt     , &kp LT       , RB1 RB2, BASE NAVI SYMB, COMBO_TERM_FAST, CO
 ZMK_COMBO(r_gt     , &kp GT       , RB2 RB3, BASE NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 ZMK_COMBO(r_lang   , &kp LC(SPACE), LH0 RH0, BASE NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(r_scr_tab, SCR_TAB      , LA0 LH2, BASE NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-
-ZMK_COMBO(ble_sel_1, &bt BT_SEL 1 , LT4 LB4, BASE NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(ble_sel_2, &bt BT_SEL 2 , LT3 LB3, BASE NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(ble_sel_3, &bt BT_SEL 3 , LT2 LB2, BASE NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(ble_sel_4, &bt BT_SEL 4 , LT1 LB1, BASE NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(ble_clear, &bt BT_CLR   , LT0 LB0, BASE NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-
+ZMK_COMBO(r_scr_tab, &kp LC(UP)   , LA0 LH2, BASE NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)

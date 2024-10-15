@@ -4,7 +4,7 @@
 #define HT_IDLE   require-prior-idle-ms = <120>;
 #define HT_LEFT   hold-trigger-key-positions = <KEYS_RIGHT KEYS_ETC>;
 #define HT_RIGHT  hold-trigger-key-positions = <KEYS_LEFT KEYS_ETC>;
-#define HT_MT     bindings = <&kp>, <&kp>; hold-trigger-on-release; hold-while-undecided;
+#define HT_MT     bindings = <&kp>, <&kp>; hold-trigger-on-release;
 #define HT_LT     bindings = <&mo>, <&kp>;
 
 ZMK_HOLD_TAP(lmt, HT HT_LEFT  HT_MT HT_BLCD HT_IDLE)
