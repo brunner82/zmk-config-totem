@@ -12,25 +12,4 @@
 
 #include "./hold_tap.dtsi"
 #include "./mod_morph.dtsi"
-
-/*=====================*/
-/* Alias               */
-/*=====================*/
-#define __________ &trans
-#define EMOJI      &kp LC(LG(SPACE))
-#define SCR_CAP    &kp LS(LC(LG(N4)))
-#define SCR_REC    &kp LS(LG(N5))
-#define SCR_PRV    &kp LC(LEFT)
-#define SCR_NXT    &kp LC(RIGHT)
-#define SCR_TAB    &kp LC(UP)
-
-#define SYMB_RET   &tlt SYMB RET
-#define NAVI_SPC   &tlt NAVI SPACE
-#define SYMB_BSPC  &tlt SYMB BSPC
-#define A_LEFT     &kp LA(LEFT)
-#define A_RIGHT    &kp LA(RIGHT)
-#define A_UP       &kp LA(UP)
-#define A_DOWN     &kp LA(DOWN)
-
-#include "./combos.dtsi"
 #include "./layers.dtsi"
