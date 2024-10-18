@@ -15,7 +15,7 @@
 #define KP_LA0     &tlt FUNC LC(LG(LEFT))
 #define KP_LH2     &kp LC(LG(RIGHT))
 #define KP_LH1     &tlt NAVI SPACE
-#define KP_LH0     &tlt SYMB RET
+#define KP_LH0     &tlt NUMB RET
 
 #define KP_RH0     &tlt SYMB BSPC
 #define KP_RH1     &sk LSHFT
