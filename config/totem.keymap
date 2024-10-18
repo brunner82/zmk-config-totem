@@ -6,11 +6,6 @@
 #include "./totem_key_position.h"
 #include "./totem_macro.h"
 
-#define BASE 0
-#define NAVI 1
-#define SYMB 2
-#define FUNC 3
-
 #include "./hold_tap.dtsi"
 #include "./mod_morph.dtsi"
 #include "./layers.dtsi"
