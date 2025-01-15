@@ -29,8 +29,17 @@
 #define ZMK_HOLD_TAP(name, ...) ZMK_BEHAVIOR(name, hold_tap, __VA_ARGS__)
 #define ZMK_KEY_REPEAT(name, ...) ZMK_BEHAVIOR(name, key_repeat, __VA_ARGS__)
 #define ZMK_MOD_MORPH(name, ...) ZMK_BEHAVIOR(name, mod_morph, __VA_ARGS__)
+#define ZMK_SFT_MORPH(name, base, morped) \
+  ZMK_MOD_MORPH(name, \
+    mods = <(MOD_LSFT|MOD_RSFT)>; \
+    bindings = <base>, <morped>; \
+  )
 #define ZMK_STICKY_KEY(name, ...) ZMK_BEHAVIOR(name, sticky_key, __VA_ARGS__)
 #define ZMK_TAP_DANCE(name, ...) ZMK_BEHAVIOR(name, tap_dance, __VA_ARGS__)
+#define ZMK_DOUBLE_TAP(name, single_tap, double_tap) \
+  ZMK_TAP_DANCE(name, \
+    bindings = <single_tap>, <double_tap>; \
+  )
 
 /*=====================*/
 /* Layer               */
