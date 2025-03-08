@@ -93,8 +93,8 @@ ZMK_MACRO_TWO_PARAM(tog_mt,
 #define TAB_L &kp LC(LS(TAB))
 #define TAB_R &kp LC(TAB)
 
-#define KP_LA0     &ato MOUS MOUS
-#define KP_LH2     &sk LCTRL
+#define KP_LA0     &kp LGUI
+#define KP_LH2     &ato MOUS MOUS
 #define KP_LH1     &tlt NAVI SPACE
 #define KP_LH0     &tlt SYMB RET
 
