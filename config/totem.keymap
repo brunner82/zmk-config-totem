@@ -34,17 +34,20 @@
 #define HT_IDLE   require-prior-idle-ms = <120>;
 #define HT_LEFT   hold-trigger-key-positions = <KEYS_RIGHT KEYS_ETC>;
 #define HT_RIGHT  hold-trigger-key-positions = <KEYS_LEFT KEYS_ETC>;
-#define HT_MT     bindings = <&kp>, <&kp>; hold-trigger-on-release;
+#define HT_MT     bindings = <&kp>, <&kp>;  hold-trigger-on-release;
+#define HT_ML     bindings = <&kp>, <&to>; hold-trigger-on-release;
 #define HT_LT     bindings = <&mo>, <&kp>;
-#define HT_TO     bindings = <&mo>, <&tog>;
+#define HT_LL     bindings = <&mo>, <&to>;
 
 ZMK_HOLD_TAP(lmt, HT HT_LEFT  HT_MT HT_BLCD HT_IDLE)
+ZMK_HOLD_TAP(lml, HT HT_LEFT  HT_ML HT_BLCD HT_IDLE)
 ZMK_HOLD_TAP(llt, HT HT_LEFT  HT_LT HT_BLCD HT_IDLE)
 ZMK_HOLD_TAP(rmt, HT HT_RIGHT HT_MT HT_BLCD HT_IDLE)
+ZMK_HOLD_TAP(rml, HT HT_RIGHT HT_ML HT_BLCD HT_IDLE)
 ZMK_HOLD_TAP(rlt, HT HT_RIGHT HT_LT HT_BLCD HT_IDLE)
 ZMK_HOLD_TAP(tmt, HT          HT_MT HT_HOLD        )
 ZMK_HOLD_TAP(tlt, HT          HT_LT HT_BLCD        )
-ZMK_HOLD_TAP(ato, HT          HT_TO HT_BLCD        )
+ZMK_HOLD_TAP(tll, HT          HT_LL HT_BLCD        )
 
 /*=====================*/
 /* Mod Morp            */
@@ -52,6 +55,8 @@ ZMK_HOLD_TAP(ato, HT          HT_TO HT_BLCD        )
 ZMK_SFT_MORPH(M_COMMA, &kp COMMA, &kp QMARK)
 ZMK_SFT_MORPH(M_DOT,   &kp DOT,   &kp EXCL)
 ZMK_SFT_MORPH(M_FSLH,  &kp FSLH,  &kp BSLH)
+ZMK_SFT_MORPH(M_LPAR,  &kp LPAR,  &kp LBRC)
+ZMK_SFT_MORPH(M_RPAR,  &kp RPAR,  &kp RBRC)
 
 /*=====================*/
 /* Macro               */
@@ -76,6 +81,7 @@ ZMK_MACRO_TWO_PARAM(tog_mt,
 /* Alias               */
 /*=====================*/
 #define __________ &trans
+#define .......... &none
 
 #define MOUS_LC &tog_mt MOUS LCTRL
 #define MOUS_LC_LS &tog_mt MOUS LS(LCTRL)
@@ -88,38 +94,51 @@ ZMK_MACRO_TWO_PARAM(tog_mt,
 #define MSC_R &msc SCRL_RIGHT
 #define MSC_U &msc SCRL_UP
 #define MSC_D &msc SCRL_DOWN
+#define WIN_T &kp LG(TAB)
 #define WIN_L &kp LC(LG(LEFT))
 #define WIN_R &kp LC(LG(RIGHT))
 #define TAB_L &kp LC(LS(TAB))
 #define TAB_R &kp LC(TAB)
 
-#define KP_LA0     &kp LGUI
-#define KP_LH2     &ato MOUS MOUS
-#define KP_LH1     &tlt NAVI SPACE
-#define KP_LH0     &tlt SYMB RET
+#define KP_LA0 &kp LGUI
+#define KP_LH2 WIN_T
+#define KP_LH1 &tlt NAVI SPACE
+#define KP_LH0 &tlt SYMB RET
 
-#define KP_RH0     &tlt SYMB BSPC
-#define KP_RH1     &sk LSHFT
-#define KP_RH2     &tlt FUNC DEL
-#define KP_RA0     &kp APOS
+#define KP_RH0 &tlt SYMB BSPC
+#define KP_RH1 &sk LSHFT
+#define KP_RH2 &tlt FUNC DEL
+#define KP_RA0 &kp APOS
 
-#define LX1(keycode) &lmt LSHFT keycode
-#define LX2(keycode) &lmt LCTRL keycode
-#define LX3(keycode) &lmt LALT keycode
-#define LX4(keycode) &lmt LGUI keycode
-#define LX12(keycode) &lmt LS(LCTRL) keycode
-#define LX23(keycode) &lmt LC(LALT) keycode
-#define LX34(keycode) &lmt LA(LGUI) keycode
-#define LX13(keycode) &lmt LS(LALT) keycode
+#define LMT1(keycode) &lmt LSHFT keycode
+#define LMT2(keycode) &lmt LCTRL keycode
+#define LMT3(keycode) &lmt LALT keycode
+#define LMT4(keycode) &lmt LGUI keycode
 
-#define RX1(keycode) &rmt LSHFT keycode
-#define RX2(keycode) &rmt LCTRL keycode
-#define RX3(keycode) &rmt LALT keycode
-#define RX4(keycode) &rmt LGUI keycode
-#define RX12(keycode) &lmt LS(LCTRL) keycode
-#define RX23(keycode) &lmt LC(LALT) keycode
-#define RX34(keycode) &lmt LA(LGUI) keycode
-#define RX13(keycode) &lmt LS(LALT) keycode
+#define LMT12(keycode) &lmt LS(LCTRL) keycode
+#define LMT23(keycode) &lmt LC(LALT) keycode
+#define LMT34(keycode) &lmt LA(LGUI) keycode
+#define LMT13(keycode) &lmt LS(LALT) keycode
+
+#define LML12(keycode) &lml LS(LCTRL) keycode
+#define LML23(keycode) &lml LC(LALT) keycode
+#define LML34(keycode) &lml LA(LGUI) keycode
+#define LML13(keycode) &lml LS(LALT) keycode
+
+#define RMT1(keycode) &rmt LSHFT keycode
+#define RMT2(keycode) &rmt LCTRL keycode
+#define RMT3(keycode) &rmt LALT keycode
+#define RMT4(keycode) &rmt LGUI keycode
+
+#define RMT12(keycode) &rmt LS(LCTRL) keycode
+#define RMT23(keycode) &rmt LC(LALT) keycode
+#define RMT34(keycode) &rmt LA(LGUI) keycode
+#define RMT13(keycode) &rmt LS(LALT) keycode
+
+#define RML12(keycode) &rml LS(LCTRL) keycode
+#define RML23(keycode) &rml LC(LALT) keycode
+#define RML34(keycode) &rml LA(LGUI) keycode
+#define RML13(keycode) &rml LS(LALT) keycode
 
 /*=====================*/
 /* Keymap              */
@@ -128,25 +147,25 @@ ZMK_LAYER(base_layer, /*
 ╭────────────┬────────────┬────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────┬────────────┬────────────╮
 */&kp Q        &kp W        &kp E        &kp R        &kp T         &kp Y        &kp U        &kp I        &kp O        &kp P     /*
 ├────────────┼────────────┼────────────┼────────────┼────────────┤├────────────┼────────────┼────────────┼────────────┼────────────┤
-*/LX4(A)       LX3(S)       LX2(D)       LX1(F)       &kp G         &kp H        RX1(J)       RX2(K)       RX3(L)       RX4(SEMI) /*
+*/LMT4(A)      LMT3(S)      LMT2(D)      LMT1(F)      &kp G         &kp H        RMT1(J)      RMT2(K)      RMT3(L)      RMT4(SEMI)/*
 ├────────────┼────────────┼────────────┼────────────┼────────────┤├────────────┼────────────┼────────────┼────────────┼────────────┤
 */&kp Z        &kp X        &kp C        &kp V        &kp B         &kp N        &kp M        &M_COMMA     &M_DOT       &M_FSLH   /*
 ╰────────────┴────────────┴────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────┴────────────┴────────────╯
 ╭────────────╮            ╭────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────╮            ╭────────────╮
-*/KP_LA0       &none        KP_LH2       KP_LH1       KP_LH0        KP_RH0       KP_RH1       KP_RH2       &none        KP_RA0    /*
+*/KP_LA0       ..........   KP_LH2       KP_LH1       KP_LH0        KP_RH0       KP_RH1       KP_RH2       ..........   KP_RA0    /*
 ╰────────────╯            ╰────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────╯            ╰────────────╯
 */)
 
 ZMK_LAYER(mous_layer, /*
 ╭────────────┬────────────┬────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────┬────────────┬────────────╮
-*/&kp LG(TAB)  &kp LS(TAB)  &kp LALT     &kp TAB      __________    &kp C_MUTE   WIN_L        TAB_L        TAB_R        WIN_R     /*
+*/&kp C_RW    &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &kp C_FF      ..........   WIN_L        TAB_L        TAB_R        WIN_R     /*
 ├────────────┼────────────┼────────────┼────────────┼────────────┤├────────────┼────────────┼────────────┼────────────┼────────────┤
-*/&mkp MB4     &mkp MB3     &mkp MB2     &mkp MB1     &mkp MB5     &kp C_VOL_UP  MMV_L        MMV_D        MMV_U        MMV_R     /*
+*/&mkp MB4     &mkp MB3     &mkp MB2     &mkp MB1     &mkp MB5      WIN_T        MMV_L        MMV_D        MMV_U        MMV_R     /*
 ├────────────┼────────────┼────────────┼────────────┼────────────┤├────────────┼────────────┼────────────┼────────────┼────────────┤
-*/__________   __________   __________   __________   __________   &kp C_VOL_DN  MSC_L        MSC_D        MSC_U        MSC_R     /*
+*/&kp LC(LS(T)) &kp C_PREV  &kp C_PP     &kp C_NEXT   &kp LC(W)     ..........   MSC_L        MSC_D        MSC_U        MSC_R     /*
 ╰────────────┴────────────┴────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────┴────────────┴────────────╯
 ╭────────────╮            ╭────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────╮            ╭────────────╮
-*/__________   __________   __________   __________   MOUS_LC       MOUS_LC_LS   __________   __________   __________   __________/*
+*/__________   ..........   __________   __________   __________    __________   __________   __________   ..........   __________/*
 ╰────────────╯            ╰────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────╯            ╰────────────╯
 */)
 
@@ -154,12 +173,12 @@ ZMK_LAYER(navi_layer, /*
 ╭────────────┬────────────┬────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────┬────────────┬────────────╮
 */__________   __________   __________   __________   __________    __________   __________   __________   __________   __________/*
 ├────────────┼────────────┼────────────┼────────────┼────────────┤├────────────┼────────────┼────────────┼────────────┼────────────┤
-*/__________   __________   __________   __________   __________    __________   &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT /*
+*/&kp LGUI     &kp LALT     &kp LCTRL    &kp LSHFT    __________    __________   &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT /*
 ├────────────┼────────────┼────────────┼────────────┼────────────┤├────────────┼────────────┼────────────┼────────────┼────────────┤
 */__________   __________   __________   __________   __________    __________   &kp HOME     &kp PG_DN    &kp PG_UP    &kp END   /*
 ╰────────────┴────────────┴────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────┴────────────┴────────────╯
 ╭────────────╮            ╭────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────╮            ╭────────────╮
-*/__________   __________   __________   __________   __________    __________   __________   __________   __________   __________/*
+*/__________   ..........   __________   __________   __________    __________   __________   __________   ..........   __________/*
 ╰────────────╯            ╰────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────╯            ╰────────────╯
 */)
 
@@ -167,12 +186,12 @@ ZMK_LAYER(symb_layer, /*
 ╭────────────┬────────────┬────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────┬────────────┬────────────╮
 */&kp GRAVE    &kp DLLR     &kp CARET    &kp PRCNT    __________    __________   &kp N7       &kp N8       &kp N9       &kp N0    /*
 ├────────────┼────────────┼────────────┼────────────┼────────────┤├────────────┼────────────┼────────────┼────────────┼────────────┤
-*/LX4(TILDE)   LX3(MINUS)   LX2(PLUS)    LX1(EQUAL)   &kp AT        __________   RX1(N4)      RX2(N5)      RX3(N6)      RX4(N0)   /*
+*/LMT4(TILDE)  LMT3(MINUS)  LMT2(PLUS)   LMT1(EQUAL)  &kp AT        __________   RMT1(N4)     RMT2(N5)     RMT3(N6)     RMT4(N0)  /*
 ├────────────┼────────────┼────────────┼────────────┼────────────┤├────────────┼────────────┼────────────┼────────────┼────────────┤
 */&kp HASH     &kp FSLH     &kp STAR     &kp UNDER    __________    __________   &kp N1       &kp N2       &kp N3       &kp N0    /*
 ╰────────────┴────────────┴────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────┴────────────┴────────────╯
 ╭────────────╮            ╭────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────╮            ╭────────────╮
-*/__________   __________   __________   __________   __________    __________   __________   __________   __________   __________/*
+*/__________   ..........   __________   __________   __________    __________   __________   __________   ..........   __________/*
 ╰────────────╯            ╰────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────╯            ╰────────────╯
 */)
 
@@ -185,7 +204,7 @@ ZMK_LAYER(func_layer, /*
 */__________   &kp F1       &kp F2       &kp F3       &kp F10       __________   __________   __________   __________   __________/*
 ╰────────────┴────────────┴────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────┴────────────┴────────────╯
 ╭────────────╮            ╭────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────╮            ╭────────────╮
-*/__________   __________   __________   __________   __________    __________   __________   __________   __________   __________/*
+*/__________   ..........   __________   __________   __________    __________   __________   __________   ..........   __________/*
 ╰────────────╯            ╰────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────╯            ╰────────────╯
 */)
 
@@ -201,9 +220,9 @@ ZMK_LAYER(func_layer, /*
 ╭────────────┬────────────┬────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────┬────────────┬────────────╮
 │    LT4     │    LT3     |    LT2     &    LT1     │    LT0     ││    RT0     │    RT1     [    RT2     ]    RT3     │    RT4     │
 ├────────────┼──── - ─────┼──── + ─────┼──── = ─────┼────────────┤├────────────┼────────────┼────────────┼────────────┼────────────┤
-│    LM4    Del   LM3    Tab   LM2   Enter  LM1    Bspc  LM0     ││    RM0     {    RM1     (    RM2     )    RM3     }    RM4     │
+│    LM4    Del   LM3    Tab   LM2    Bspc  LM1     │    LM0     ││    RM0     │    RM1    MOUS  RM2    DEFT  RM3     │    RM4     │
 ├────────────┼──── / ─────┼──── * ─────┼──── _ ─────┼────────────┤├────────────┼────────────┼────────────┼────────────┼────────────┤
-│    LB4     │    LB3     _    LB2     =    LB1     │    LB0     ││    RB0     │    RB1     <    RB2     >    RB3     │    RB4     │
+│    LB4     │    LB3    ( {   LB2    ) }   LB1     │    LB0     ││    RB0     │    RB1     <    RB2     >    RB3     │    RB4     │
 ╰────────────┴────────────┴────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────┴────────────┴────────────╯
 ╭────────────╮            ╭────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────╮            ╭────────────╮
 │    LA0     │            │    LH2     │    LH1     │    LH0     ││    RH0     │    RH1     │    RH2     │            │    RA0     │
@@ -211,33 +230,29 @@ ZMK_LAYER(func_layer, /*
 */
 
 // Left horizontal
-ZMK_COMBO(lh_amps   , &kp AMPS       , LT1 LT2, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(lh_pipe   , &kp PIPE       , LT2 LT3, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(lh_bspc   , LX12(BSPC)     , LM1 LM2, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(lh_tab    , LX23(TAB)      , LM2 LM3, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(lh_del    , LX34(DEL)      , LM3 LM4, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(lh_esc    , LX13(ESC)      , LM1 LM3, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(lh_equal  , &kp EQUAL      , LB1 LB2, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(lh_under  , &kp UNDER      , LB2 LB3, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lh_amps   , &kp AMPS        , LT1 LT2, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lh_pipe   , &kp PIPE        , LT2 LT3, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lh_bspc   , LMT12(BSPC)     , LM1 LM2, BASE MOUS          , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lh_tab    , LMT23(TAB)      , LM2 LM3, BASE MOUS          , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lh_del    , LMT34(DEL)      , LM3 LM4, BASE MOUS          , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lh_esc    , LMT13(ESC)      , LM1 LM3, BASE MOUS          , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lh_lpar   , &M_LPAR         , LB1 LB2, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lh_rpar   , &M_RPAR         , LB2 LB3, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 // Right horizontal
-ZMK_COMBO(rh_lbkt   , &kp LBKT       , RT1 RT2, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rh_rbkt   , &kp RBKT       , RT2 RT3, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rh_lbrc   , &kp LBRC       , RM0 RM1, BASE      NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rh_lpar   , RX12(LPAR)     , RM1 RM2, BASE      NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rh_rpar   , RX23(RPAR)     , RM2 RM3, BASE      NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rh_lpar   , RX12(LPAR)     , RM1 RM2, BASE      NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rh_rpar   , RX23(RPAR)     , RM2 RM3, BASE      NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rh_rbrc   , RX34(RBRC)     , RM3 RM4, BASE      NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rh_lang   , RX13(LC(SPACE)), RM1 RM3, BASE      NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rh_lt     , &kp LT         , RB1 RB2, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(rh_gt     , &kp GT         , RB2 RB3, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-// Left vertical
-ZMK_COMBO(lv_equal  , &kp EQUAL      , LT1 LM1, BASE MOUS NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(lv_under  , &kp UNDER      , LM1 LB1, BASE MOUS NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(lv_plus   , &kp PLUS       , LT2 LM2, BASE MOUS NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(lv_star   , &kp STAR       , LM2 LB2, BASE MOUS NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(lv_minus  , &kp MINUS      , LT3 LM3, BASE MOUS NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(lv_fslh   , &kp FSLH       , LM3 LB3, BASE MOUS NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(rh_lbkt   , &kp LBKT        , RT1 RT2, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rh_rbkt   , &kp RBKT        , RT2 RT3, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rh_MOUS   , RML12(MOUS)     , RM1 RM2, BASE               , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rh_DEFT   , RML23(DEFT)     , RM2 RM3, BASE MOUS          , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rh_lang   , RMT13(LC(SPACE)), RM1 RM3, BASE               , COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rh_lt     , &kp LT          , RB1 RB2, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(rh_gt     , &kp GT          , RB2 RB3, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
+// Left vertical
+ZMK_COMBO(lv_equal  , &kp EQUAL       , LT1 LM1, BASE MOUS NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(lv_under  , &kp UNDER       , LM1 LB1, BASE MOUS NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(lv_plus   , &kp PLUS        , LT2 LM2, BASE MOUS NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(lv_star   , &kp STAR        , LM2 LB2, BASE MOUS NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(lv_minus  , &kp MINUS       , LT3 LM3, BASE MOUS NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(lv_fslh   , &kp FSLH        , LM3 LB3, BASE MOUS NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
 // Both horizontal
-ZMK_COMBO(bh_boot   , &bootloader    , LH2 RH2, BASE MOUS NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(bh_boot   , &bootloader     , LH2 RH2, BASE MOUS NAVI SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
