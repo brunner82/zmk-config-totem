@@ -136,11 +136,11 @@ ZMK_LAYER(base_layer, /*
 
 ZMK_LAYER(mous_layer, /*
 ╭────────────┬────────────┬────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────┬────────────┬────────────╮
-*/&kp LEFT    &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &kp RIGHT     &kp LC(W)    WIN_L        TAB_L        TAB_R        WIN_R     /*
+*/&kp LEFT    &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &kp RIGHT     &kp C_MUTE   WIN_L        TAB_L        TAB_R        WIN_R     /*
 ├────────────┼────────────┼────────────┼────────────┼────────────┤├────────────┼────────────┼────────────┼────────────┼────────────┤
-*/&mkp MB4     &mkp MB3     &mkp MB2     &mkp MB1     &mkp MB5      WIN_T        MMV_L        MMV_D        MMV_U        MMV_R     /*
+*/&mkp MB4     &mkp MB3     &mkp MB2     &mkp MB1     &mkp MB5     &kp C_VOL_UP  MMV_L        MMV_D        MMV_U        MMV_R     /*
 ├────────────┼────────────┼────────────┼────────────┼────────────┤├────────────┼────────────┼────────────┼────────────┼────────────┤
-*/&kp LT       &kp C_PREV   &kp C_PP     &kp C_NEXT   &kp GT       &kp LC(LS(T)) MSC_L        MSC_D        MSC_U        MSC_R     /*
+*/&kp LT       &kp C_PREV   &kp C_PP     &kp C_NEXT   &kp GT       &kp C_VOL_DN  MSC_L        MSC_D        MSC_U        MSC_R     /*
 ╰────────────┴────────────┴────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────┴────────────┴────────────╯
 ╭────────────╮            ╭────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────╮            ╭────────────╮
 */__________   wwwwwwwwww   __________   __________   __________    __________   __________   __________   wwwwwwwwww   __________/*
@@ -216,6 +216,7 @@ ZMK_COMBO(lh_del    , LMT34(DEL)      , LM3 LM4, BASE MOUS          , COMBO_TERM
 ZMK_COMBO(lh_esc    , LMT13(ESC)      , LM1 LM3, BASE MOUS          , COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(lh_rpar   , &M_RPAR         , LB1 LB2, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(lh_lpar   , &M_LPAR         , LB2 LB3, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(lh_mute   , &kp C_MUTE      , LB2 LB3, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 // Right horizontal
 ZMK_COMBO(rh_lbkt   , &kp LBKT        , RT1 RT2, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(rh_rbkt   , &kp RBKT        , RT2 RT3, BASE MOUS NAVI SYMB, COMBO_TERM_FAST, COMBO_IDLE_FAST)
