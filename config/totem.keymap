@@ -104,7 +104,7 @@ ZMK_SFT_MORPH(M_RPAR,  &kp RPAR,  &kp RBRC)
 #define LMT31(keycode) &lmt LS(LALT) keycode
 
 #define LML43(keycode) &lml LA(LGUI) keycode
-#define LML33(keycode) &lml LC(LALT) keycode
+#define LML32(keycode) &lml LC(LALT) keycode
 #define LML21(keycode) &lml LS(LCTRL) keycode
 #define LML31(keycode) &lml LS(LALT) keycode
 
