@@ -26,13 +26,6 @@
 #define NUMB 4
 #define SYMB 5
 #define FUNC 6
-/ {
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        hot1_navi { if-layers = <HOT1>; then-layer = <NAVI>; };
-        hot2_navi { if-layers = <HOT2>; then-layer = <SYMB>; };
-    };
-};
 
 /*=====================*/
 /* Hold Tap            */
