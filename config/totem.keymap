@@ -240,11 +240,11 @@ ZMK_LAYER(hot2_layer, /*
 
 /*
 ╭────────────┬────────────┬────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────┬────────────┬────────────╮
-│    LT4     [    LT3     (    LT2     )    LT1     ]    LT0     ││    RT0     │    RT1     [    RT2     ]    RT3     │    RT4     │
+│    LT4     │    LT3     │    LT2     │    LT1     │    LT0     ││    RT0     │    RT1     │    RT2     │    RT3     │    RT4     │
 ├────────────┼────────────┼────────────┼────────────┼────────────┤├────────────┼────────────┼────────────┼────────────┼────────────┤
-│    LM4    Del   LM3    NUMB  LM2    SYMB  LM1    Bsps  LM0     ││    RM0     │    RM1    MOUS  RM2    NAVI  RM3     │    RM4     │
+│    LM4    Del   LM3    Tab   LM2    Bspc  LM1     │    LM0     ││    RM0     │    RM1    MOUS  RM2    NAVI  RM3     │    RM4     │
 ├────────────┼────────────┼────────────┼────────────┼────────────┤├────────────┼────────────┼────────────┼────────────┼────────────┤
-│    LB4     <    LB3     {    LB2     }    LB1     >    LB0     ││    RB0     │    RB1     <    RB2     >    RB3     │    RB4     │
+│    LB4     │    LB3     │    LB2     │    LB1     │    LB0     ││    RB0     │    RB1     │    RB2     │    RB3     │    RB4     │
 ╰────────────┴────────────┴────────────┴────────────┴────────────╯╰────────────┴────────────┴────────────┴────────────┴────────────╯
 ╭────────────╮            ╭────────────┬────────────┬────────────╮╭────────────┬────────────┬────────────╮            ╭────────────╮
 │    LA0     │            │    LH2     │    LH1     │    LH0     ││    RH0     │    RH1     │    RH2     │            │    RA0     │
@@ -291,4 +291,4 @@ ZMK_COMBO(lv_fslh   , &kp FSLH        , LM3 LB3, BASE MOUS NAVI NUMB SYMB, COMBO
 
 // Both horizontal
 ZMK_COMBO(bh_boot   , &bootloader     , LH2 RH2, BASE MOUS NAVI NUMB SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
-ZMK_COMBO(bh_studio , &studio_unlock  , LA0 RA1, BASE MOUS NAVI NUMB SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
+ZMK_COMBO(bh_studio , &studio_unlock  , LA0 RA0, BASE MOUS NAVI NUMB SYMB, COMBO_TERM_SLOW, COMBO_IDLE_SLOW)
