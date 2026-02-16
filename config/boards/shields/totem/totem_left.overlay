@@ -1,4 +1,9 @@
 #include "totem.dtsi"
+/ {
+    chosen {
+        zmk,split-role = "central";
+    };
+};
 
 &kscan0 {
     col-gpios
